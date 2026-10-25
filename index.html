@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Ti, Mi Amor 💖</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #000;
+            text-align: center;
+        }
+
+        header {
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Carrusel */
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 40px auto; /* 🔥 esto centra el carrusel */
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+            animation: fade 1.5s;
+        }
+
+        @keyframes fade {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        .controls {
+            margin-top: 15px;
+        }
+
+        .controls button {
+            background: #fff;
+            border: none;
+            color: #ff5f7e;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background: #ffd6df;
+        }
+
+        /* Mensajes */
+        .messages {
+            max-width: 700px;
+            margin: 50px auto;
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .messages h2 {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+
+        footer {
+            padding: 20px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        /* Corazones decorativos */
+        .heart {
+            position: fixed;
+            color: rgba(255,255,255,0.7);
+            font-size: 20px;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Para Ti, Mi Amor 💕</h1>
+    <p>Un pequeño detalle para recordarte lo especial que eres</p>
+</header>
+
+<!-- Carrusel -->
+<div class="carousel">
+    <!-- CAMBIA LAS IMÁGENES POR LAS TUYAS -->
+    <img src="1.jpeg" class="active" style="max-height: 350px; width: auto;">
+    <img src="2.jpeg" style="max-height: 350px; width: auto;">
+    <img src="3.jpeg" style="max-height: 350px; width: auto;">
+    <img src="4.jpeg" style="max-height: 350px; width: auto;">
+</div>
+
+<div class="controls">
+    <button onclick="prevImage()">❮</button>
+    <button onclick="nextImage()">❯</button>
+</div>
+
+<!-- Mensajes -->
+<section class="messages">
+    <h2>Mensajes para Ti 💌</h2>
+    <div class="message">🌸 Nunca olvides lo fuerte y valiosa que eres.</div>
+    <div class="message">💖 Estoy orgulloso de ti y de todo lo que logras.</div>
+    <div class="message">✨ Incluso en los días difíciles, sigues brillando.</div>
+    <div class="message">🌹 No estás sola, siempre estaré a tu lado.</div>
+</section>
+
+<footer>
+    Hecho con todo mi amor 💕
+</footer>
+
+<script>
+    const images = document.querySelectorAll('.carousel img');
+    let currentIndex = 0;
+
+    function showImage(index) {
+        images.forEach(img => img.classList.remove('active'));
+        images[index].classList.add('active');
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    }
+
+    // Carrusel automático
+    setInterval(nextImage, 4000);
+
+    // Corazones flotando
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
